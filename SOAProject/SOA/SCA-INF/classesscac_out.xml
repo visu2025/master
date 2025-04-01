@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='SOAPReference']</loc>
+      <line>55</line>
+      <col>77</col>
+      <file>C:\JDeveloper\mywork\SampleApplication\SOAProject\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\SampleApplication\SOAProject\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "SOAPReference":"null" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='SOAPReference']</loc>
+      <line>55</line>
+      <col>77</col>
+      <file>C:\JDeveloper\mywork\SampleApplication\SOAProject\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\SampleApplication\SOAProject\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "SOAPReference":"null" in WSDL Manager</msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='sequence'][@name='main']/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='invoke'][@name='Invoke1']</loc>
+      <line>63</line>
+      <col/>
+      <file>BPEL/BPELProcess7.bpel</file>
+      <name>BPEL/BPELProcess7.bpel</name>
+      <fix>Make sure that the attribute "partnerLink" is specified.</fix>
+      <msg>Attribute "partnerLink" is not set on this &lt;bpel:invoke> activity.</msg>
+   </Fault>
+</Faults>

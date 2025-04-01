@@ -1,0 +1,774 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://erp.soa.geappliances.com/ESB/EnterpriseWorkOrder/EnterpriseWorkOrderEBO"
+           xmlns="http://erp.soa.geappliances.com/ESB/EnterpriseWorkOrder/EnterpriseWorkOrderEBO"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:documentation>Enterprise Business Object - EnterpriseWorkOrder</xs:documentation>
+    <xs:documentation>Version - 1.0</xs:documentation>
+    <xs:documentation>Definition - for transferring/updating WorkOrder information</xs:documentation>
+    <xs:documentation>WorkOrder Reference Parent Identifier - JOB_ID</xs:documentation>
+    <xs:documentation>WorkOrder Reference Child Identifier - OPERATION_SEQ_NUM</xs:documentation>
+  </xs:annotation>
+  <xs:element name="WORK_ORDER">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="WORK_ORDER_INPUT" type="WORK_ORDER_CORE_TYPE" minOccurs="0" maxOccurs="unbounded"
+                    nillable="true"/>
+        <xs:element name="WORK_ORDER_OUTPUT" type="WORK_ORDER_CORE_TYPE" minOccurs="0" maxOccurs="unbounded"
+                    nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="WORK_ORDER_CORE_TYPE">
+    <xs:sequence>
+      <xs:element name="WORK_ORDER" type="WORK_ORDER_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WORK_ORDER_TYPE">
+    <xs:sequence>
+      <xs:element name="JOB" type="JOB_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILL" type="BILL_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORG" type="ORG_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ROUTING" type="ROUTING_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULE_GROUP" type="SCHEDULE_GROUP_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULING" type="SCHEDULING_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SALES_ORDERS" type="SALES_ORDERS_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OPERATIONS" type="OPERATIONS_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!--Adding for SVC-59-->
+      <xs:element name="TRANSACTION_HEADER" type="TRANSACTION_HEADER_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVICE_CALL_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORDER_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORDER_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILL_TO_CUSTOMER" type="CUSTOMER_DETAILS_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVE_TO_BUSINESS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILL_TO_BUSINESS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PERSON_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TECH_ETA" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVE_TO_CUSTOMER" type="CUSTOMER_DETAILS_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVE_TO_CUST_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVICE_CONTRACT" type="SERVICE_CONTRACT_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TIME_WINDOW" type="TIME_WINDOW_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_INSTALLATION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MODEL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERIAL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BRAND" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- New element BRAND_CODE -->
+      <xs:element name="BRAND_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BRAND_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SMC_PRODUCT_LINE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_LINE_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_LINE_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- New element PRODUCT_LINE_EMAIL -->
+      <xs:element name="PRODUCT_LINE_EMAIL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CATEGORY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_COMPLAINT" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_REMARKS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_DIRECTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PAY_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PURCHASE_ORDER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- New element BILL_TO_AUTHORIZATION -->
+      <xs:element name="BILL_TO_AUTHORIZATION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORDER_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CLASS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_SPAN" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_TIME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_PRIORITY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="HOME_CALL_CHARGE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISPATCHER_EMAIL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVICE_AREA_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SP_JOB_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TECH_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OPERATION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="HELPER_TECH_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRIMARY_USER_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="USER_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LONG_CALL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="WARRANTY_CONFIRM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RED_FLAG_FIELD" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MAP_CD" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_NOTE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_SUSPEND" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_SUSPEND_REASON" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CANCEL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CANCEL_REASON" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CANCEL_REASON_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REPEAT_FLAG" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FOLLOW_UP_CALL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MULTI_CALL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="WORK_CENTER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISPATCH_STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVOICE_EMAIL_ADDRESS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORDER_STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REASON_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REJECT_REASON_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILLABLE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COLLECT_PAYMENT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DELETED" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_DELIVERED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_READ" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="UPDATE_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PAUSED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CSI_INVOICE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CMD_OPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEST" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVOICE_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OLD_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <!-- New element OLD_SMC_CALL_NO -->
+      <xs:element name="OLD_SMC_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RDD_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="END_TIME" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FOLLOWUP_REASON_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="START_TIME" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SHIP_METHOD" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PARTS" type="PARTS_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <!-- Changed to unbounded  -->
+      <xs:element name="RULES" type="RULES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="NOTES" type="NOTES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="TECH_NOTES" type="NOTES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="TAX_RATE" type="TAX_RATES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISCOUNTS" type="DISCOUNT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="MAXDISCOUNTS" type="MAX_DISCOUNT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="CONCESSION" type="CONCESSION_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_HISTORY" type="CALL_HISTORY_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="LINE_ITEMS" type="ITEM_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ORDERED_ITEMS" type="ITEM_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="CREDITS" type="CREDIT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="PAYMENT" type="PAYMENT_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TOTAL" type="TOTAL_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TASKS" type="TASK_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ESTIMATE_CONFIRM_INFO" type="ESTIMATE_INFO_TYPE" minOccurs="0" maxOccurs="unbounded"
+                  nillable="true"/>
+      <xs:element name="LOYALTY_STORE" type="LOYALTY_STORE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="PQE_MISC" type="PQE_MISC_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="SERVICE_CONTRACT_ACK" type="ACKNOWLEDGEMENT_TYPE" minOccurs="0" maxOccurs="unbounded"
+                  nillable="true"/>
+      <xs:element name="WATER_FILTER_SALE_ACK" type="ACKNOWLEDGEMENT_TYPE" minOccurs="0" maxOccurs="unbounded"
+                  nillable="true"/>
+      <xs:element name="SERVICE_CODES" type="SERVICE_CODE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ALERTS" type="ALERT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="IS_COMPONENT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESCHED_REASONS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="WARRANTY" type="WARRANTY_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="FLEXVIEWS" type="FLEXVIEW_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TRANSACTION_HEADER_TYPE">
+    <xs:sequence>
+      <xs:element name="TRX_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TRX_SOURCE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TRX_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FS_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SMC_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REGION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ZONE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DAT" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TIM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TRX_SEQ_NUM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CUSTOMER_DETAILS_TYPE">
+    <xs:sequence>
+      <xs:element name="CUST_ACCOUNT_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_LAST_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_FIRST_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_ADDRESS_1" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_ADDRESS_2" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_ADDRESS_3" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_ADDRESS_4" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_CITY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_STATE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_ZIP" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_COUNTRY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_HOME_PHONE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_WORK_PHONE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_WORK_PHONE_EXTN" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUST_EMAIL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SERVICE_CONTRACT_TYPE">
+    <xs:sequence>
+      <xs:element name="CONTRACT_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONTRACT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONTRACT_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONTRACT_EXPIRY_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COPAY_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COPAY_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONTRACT_PROVIDER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILL_TO_ACCOUNT_NUM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTHORIZATION_NUM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ASSET_NUM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TIME_WINDOW_TYPE">
+    <xs:sequence>
+      <xs:element name="ORDER_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EARLIEST_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LATEST_END_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PLANNED_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PLANNED_END_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_TRAVEL_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_TRAVEL_END_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_END_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IN_SERVICE_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LAST_SERVICE_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PARTS_TYPE">
+    <xs:sequence>
+      <xs:element name="PART_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OEM_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QTY_REQUIRED" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RULES_TYPE">
+    <xs:sequence>
+      <xs:element name="CAN_DUPLICATE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_EDIT_ASSET" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_EDIT_DISCOUNTS" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_EDIT_ORDER_TYPE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_EDIT_REPEAT_CALL" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_REQUEST_MORE_TIME" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SCHEDULE_FOLLOWUP" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SEND_IVR" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SET_CHARGEABLE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SET_PRICE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_TAKE_PHOTOS" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_USE_SERVICE_CONTRACT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IN_WARRANTY" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_ASSET_SERIAL_NUM_REQ" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_HELPER_ORDER" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_OPS" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_SERVICE_CODE_REQ" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_SIG_REQ" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERIAL_NUM_PATTERN" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="STACK_DISCOUNTS" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="VALIDATE_MAIL_ORDER_PARTS" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_TARGET_JOB" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SET_LINE_ITEM_TAXABLE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_SET_WO_TAXABLE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CAN_USE_ALERT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_MULTI_PARENT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILLABLE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COLLECT_PAYMENT" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DELETED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NOTES_TYPE">
+    <xs:sequence>
+      <xs:element name="AUTHOR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TEXT" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TAX_RATES_TYPE">
+    <xs:sequence>
+      <xs:element name="PART_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="LABOR_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="PRODUCT_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="TRAVEL_CALL_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="COPAY_SALE_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="MISC_TAX" type="TAX_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CONCESSION_TYPE">
+    <xs:sequence>
+      <xs:element name="CASE_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONCESSION_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONCESSION_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CONCESSION_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PARTS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LABOUR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="HOME_CALL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUSTOM" type="EXTENSION_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CALL_HISTORY_TYPE">
+    <xs:sequence>
+      <xs:element name="SERVE_TO_CUSTOMER" type="CUSTOMER_DETAILS_TYPE" minOccurs="0" maxOccurs="unbounded"
+                  nillable="true"/>
+      <xs:element name="INVOICE_REGION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVOICE_ZONE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVOICE_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FS_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SMC_CALL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVOICE_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVICE_CALL_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TECH_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BRAND" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_LINE_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_LINE_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MODEL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERIAL_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CLASS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CALL_CLASS_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PART_COST" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LABOR_COST" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PARTS_USED" type="PART_USED_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="REPAIR_DETAIL" type="REPAIR_DETAIL_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ORDER_STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TECH_NOTES" type="NOTES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="SP_JOB_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FLEXVIEWS" type="FLEXVIEW_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CREDIT_TYPE">
+    <xs:sequence>
+      <xs:element name="DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PAYMENT_TYPE">
+    <xs:sequence>
+      <xs:element name="TOTAL_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BILLTO_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CHECK_PAYMENTS" type="CHECK_PAYMENT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="CARD_PAYMENTS" type="CARD_PAYMENT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="PAYMENT_METHOD" type="PAYMENT_METHOD_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TOTAL_TYPE">
+    <xs:sequence>
+      <xs:element name="LINE_ITEM_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISCOUNT_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CREDIT_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEPOSIT_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORDER_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RETURN_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TAX_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="GRAND_TOTAL" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TASK_TYPE">
+    <xs:sequence>
+      <xs:element name="TASK_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FLEXFORM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FLEXVIEW" type="FLEXVIEW_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="PAUSED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TITLE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_START" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTUAL_END" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DISCOUNT_TYPE">
+    <xs:sequence>
+      <xs:element name="DISCOUNT_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISCOUNT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISCOUNT_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DISCOUNT_PERCENT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_APPLIED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_TYPE" type="PRODUCT_TYPES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MAX_DISCOUNT_TYPE">
+    <xs:sequence>
+      <xs:element name="PRODUCT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RATE_PERCENT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ESTIMATE_INFO_TYPE">
+    <xs:sequence>
+      <xs:element name="LOYALTY_OPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REBATE_OPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EMAIL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LOYALTY_STORE_TYPE">
+    <xs:sequence>
+      <xs:element name="LOYALTY_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LOYALTY_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EMAIL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PQE_MISC_TYPE">
+    <xs:sequence>
+      <xs:element name="TEXT" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ACKNOWLEDGEMENT_TYPE">
+    <xs:sequence>
+      <xs:element name="ACKNOWLEDGED" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SERVICE_CODE_TYPE">
+    <xs:sequence>
+      <xs:element name="BRAND" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SYSTEM_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMPONENT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SUB_COMPONENT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REPAIR_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CUSTOM" type="EXTENSION_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ALERT_TYPE">
+    <xs:sequence>
+      <xs:element name="ALERT_REQUEST" type="ALERT_REQUEST_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ALERT_RESPONSE" type="ALERT_RESPONSE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ALERT_REQUEST_TYPE">
+    <xs:sequence>
+      <xs:element name="ALERT_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DELETED" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ASSEST_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IN_WARRANTY" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_ACTIVE" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MESSAGE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MODEL_NUM_PATTERN" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_NUM_PATTERN" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MODIFIED_UTC" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERIAL_NUM_PATTERN" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SET_IN_WARRANTY" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TEMPLATE_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="URL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SERVICE_CODES" type="SERVICE_CODE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ASSEST_AGE" type="ASSEST_AGE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="FIXED_CHARGES" type="FIXED_CHARGE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="EXTENSIONS" type="EXTENSION_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ALERT_RESPONSE_TYPE">
+    <xs:sequence>
+      <xs:element name="ALERT_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TEMPLATE_ID" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESPONSE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WARRANTY_TYPE">
+    <xs:sequence>
+      <xs:element name="DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IS_APPLIED" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FIXED" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PERCENTAGE" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRODUCT_TYPES" type="PRODUCT_TYPES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FLEXVIEW_TYPE">
+    <xs:sequence>
+      <xs:element name="TITLE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TITLE_ITEMS" type="TITLE_ITEM_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TAX_TYPE">
+    <xs:sequence>
+      <xs:element name="PRODUCT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RATE_PERCENT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION_TYPE">
+    <xs:sequence>
+      <xs:element name="CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="VALUE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PART_USED_TYPE">
+    <xs:sequence>
+      <xs:element name="PART_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PART_DESC" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="REPAIR_DETAIL_TYPE">
+    <xs:sequence>
+      <xs:element name="REPAIR_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="JOB_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CHECK_PAYMENT_TYPE">
+    <xs:sequence>
+      <xs:element name="PAYMENT_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CHECK_NO" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTHORIZATION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BANK_ROUTING_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BANK_ACCOUNT_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CARD_PAYMENT_TYPE">
+    <xs:sequence>
+      <xs:element name="PAYMENT_AMOUNT" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CARD_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CARD_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTHORIZATION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CARD_HOLDER_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EXPIRATION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PAYMENT_METHOD_TYPE">
+    <xs:sequence>
+      <xs:element name="BOOKLESS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTHROIZATION_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PRODUCT_TYPES_TYPE">
+    <xs:sequence>
+      <xs:element name="PRODUCT_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ASSEST_AGE_TYPE">
+    <xs:sequence>
+      <xs:element name="START" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="END" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FIXED_CHARGE_TYPE">
+    <xs:sequence>
+      <xs:element name="PROD_NUM" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REF_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TITLE_ITEM_TYPE">
+    <xs:sequence>
+      <xs:element name="LABEL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="VALUE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JOB_TYPE">
+    <xs:sequence>
+      <xs:element name="JOB_ID" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="JOB_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="JOB_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CLASS_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="JOB_STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="WIP_SUPPLY_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FIRM_PLANNED_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="START_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="NET_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QTY_REMAINING" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QTY_COMPLETED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QTY_SCRAPPED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE_RELEASED" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE_COMPLETED" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE_CLOSED" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULED_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULED_COMPLETION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEMAND_CLASS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LOT_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="KANBAN_CARD_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OVERCOMPLETION_TOLERAN_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OVERCOMPLETION_TOLERAN_VALUE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ASSEMBLY" type="ITEM_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTES" type="ATTRIBUTES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ITEM_TYPE">
+    <xs:sequence>
+      <xs:element name="ITEM_ID" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ITEM_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ITEM_DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ITEM_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ITEM_STATUS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EAM_ITEM_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="UOM_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="UNIT_OF_MEASURE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ENG_ITEM_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BOM_ITEM_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BOM_ENABLED_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PLANNER_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MFG_MODEL_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ITEM_REVISION" type="ITEM_REVISION_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="LONG_DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ITEM_REVISION_TYPE">
+    <xs:sequence>
+      <xs:element name="REVISION_ID" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REVISION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REVISION_LABEL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="IMPLEMENTATION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ECN_INITIATION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REVISION_REASON" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EFFECTIVITY" type="EFFECTIVITY_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EFFECTIVITY_TYPE">
+    <xs:sequence>
+      <xs:element name="EFFECTIVITY_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="EFFECTIVITY_END_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BILL_TYPE">
+    <xs:sequence>
+      <xs:element name="BILL_REFERENCE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMMON_BILL_SEQUENCE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BOM_REVISION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BOM_REVISION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ALTERNATE_BOM_DESIGNATOR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PACK_METHOD" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ORG_TYPE">
+    <xs:sequence>
+      <xs:element name="ORGANIZATION_ID" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ORGANIZATION_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROUTING_TYPE">
+    <xs:sequence>
+      <xs:element name="ROUTING_REFERENCE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMMON_ROUTING_SEQUENCE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ROUTING_REVISION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ROUTING_REVISION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ALTERNATE_ROUTING_DESIGNATOR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMPLETION_SUBINVENTORY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMPLETION_LOCATOR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SCHEDULE_GROUP_TYPE">
+    <xs:sequence>
+      <xs:element name="SCHEDULE_GROUP_NAME" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BUILD_SEQUENCE" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LINE_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PROJECT_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="TASK_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="END_ITEM_UNIT_NUMBER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SCHEDULING_TYPE">
+    <xs:sequence>
+      <xs:element name="REQUESTED_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REQUESTED_DUE_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRIORITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DUE_DATE_PENALTY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DUE_DATE_TOLERANCE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SALES_ORDERS_TYPE">
+    <xs:sequence>
+      <xs:element name="SALES_ORDER" type="SALES_ORDER_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SALES_ORDER_TYPE">
+    <xs:sequence>
+      <xs:element name="SALES_ORDER" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LINE_NUM" type="xs:long" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEMAND_CLASS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRIMARY_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PRIMARY_UOM_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESERVATION_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LINE_UOM_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPERATIONS_TYPE">
+    <xs:sequence>
+      <xs:element name="OPERATION" type="OPERATION_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPERATION_TYPE">
+    <xs:sequence>
+      <xs:element name="OPERATION_SEQ_NUM" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="OPERATION_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEPARTMENT_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COUNT_POINT_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTOCHARGE_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BACKFLUSH_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="CHECK_SKILL_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MINIMUM_TRANSFER_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE_LAST_MOVED" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_IN_QUEUE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_RUNNING" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_WAITING_TO_MOVE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_REJECTED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_SCRAPPED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_COMPLETED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="PROGRESS_PERCENTAGE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FIRST_UNIT_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="FIRST_UNIT_COMPLETION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LAST_UNIT_START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="LAST_UNIT_COMPLETION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESOURCES" type="RESOURCES_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="COMPONENTS" type="COMPONENTS_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      <xs:element name="ATTRIBUTES" type="ATTRIBUTES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RESOURCES_TYPE">
+    <xs:sequence>
+      <xs:element name="RESOURCE" type="RESOURCE_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RESOURCE_TYPE">
+    <xs:sequence>
+      <xs:element name="RESOURCE_SEQ_NUM" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESOURCE_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="RESOURCE_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="UOM_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="UOM_CLASS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BASIS_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="USAGE_RATE_OR_AMOUNT" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVERSE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SETUP_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULED_UNITS" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="APPLIED_RESOURCE_UNITS" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="APPLIED_RESOURCE_VALUE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_OPEN" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULE_SEQ_NUM" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ASSIGNED_UNITS" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SCHEDULED_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="START_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMPLETION_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SUBSTITUTE_GROUP_NUM" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="REPLACEMENT_GROUP_NUM" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BATCH_ID" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ACTIVITY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="STANDARD_RATE_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="AUTOCHARGE_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DEPARTMENT_CODE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTES" type="ATTRIBUTES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="COMPONENTS_TYPE">
+    <xs:sequence>
+      <xs:element name="COMPONENT" type="COMPONENT_TYPE" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="COMPONENT_TYPE">
+    <xs:sequence>
+      <xs:element name="COMPONENT_ITEM" type="ITEM_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="DATE_REQUIRED" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="BASIS_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_PER_ASSEMBLY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_REQUIRED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_ISSUED" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="QUANTITY_OPEN" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="INVERSE_USAGE" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMPONENT_YIELD_FACTOR" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SUPPLY_TYPE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SUPPLY_SUBINVENTORY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="SUPPLY_LOCATOR" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MRP_NET_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MPS_REQUIRED_QUANTITY" type="xs:double" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="MPS_REQUIRED_DATE" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="COMMENTS" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATP_FLAG" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATP_RULE" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTES" type="ATTRIBUTES_TYPE" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ATTRIBUTES_TYPE">
+    <xs:sequence>
+      <xs:element name="ATTRIBUTE_CATEGORY" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE1" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE2" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE3" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE4" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE5" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE6" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE7" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE8" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE9" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE10" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE11" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE12" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE13" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE14" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+      <xs:element name="ATTRIBUTE15" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

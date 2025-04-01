@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://schemas.oracle.com/bpel/faultpolicy"
+    xmlns:tns="http://schemas.oracle.com/bpel/faultpolicy"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <!-- Conditions contain a list of fault names -->
+    <xs:element name="Conditions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="faultName" type="tns:faultNameType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- action Ref must exist in the same file -->
+    <xs:complexType name="actionRefType">
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+    <!-- one condition has a test and action, if test is missing, this is the catch all condition -->
+    <xs:complexType name="conditionType">
+        <xs:all>
+            <xs:element name="test" type="tns:idType" minOccurs="0"/>
+            <xs:element name="action" type="tns:actionRefType"/>
+        </xs:all>
+    </xs:complexType>
+    <!-- One fault name match contains several conditions -->
+    <xs:complexType name="faultNameType">
+        <xs:sequence>
+            <xs:element name="condition" type="tns:conditionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:QName"/>
+    </xs:complexType>
+    <xs:complexType name="ActionType">
+        <xs:choice>
+            <xs:element name="retry" type="tns:RetryType"/>
+            <xs:element ref="tns:rethrowFault"/>
+            <xs:element ref="tns:humanIntervention"/>
+            <xs:element ref="tns:abort"/>
+            <xs:element ref="tns:replayScope"/>
+            <xs:element name="javaAction" type="tns:JavaActionType">
+                <xs:key name="UniqueReturnValue">
+                    <xs:selector xpath="tns:returnValue"/>
+                    <xs:field xpath="@value"/>
+                </xs:key>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute name="id" type="tns:idType" use="required"/>
+    </xs:complexType>
+    <xs:element name="Actions">
+        <xs:annotation>
+            <xs:documentation>Fault Recovery Actions</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Action" type="tns:ActionType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="JavaActionType">
+        <xs:annotation>
+            <xs:documentation>This action invokes java code provided</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="returnValue" type="tns:ReturnValueType" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="className" type="tns:idType" use="required"/>
+        <xs:attribute name="defaultAction" type="tns:idType" use="required"/>
+        <xs:attribute name="propertySet" type="tns:idType"/>
+    </xs:complexType>
+    <xs:complexType name="RetryType">
+        <xs:annotation>
+            <xs:documentation>This action attempts retry of activity execution</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element ref="tns:retryCount"/>
+            <xs:element ref="tns:retryInterval"/>
+            <xs:element ref="tns:exponentialBackoff" minOccurs="0"/>
+            <xs:element name="retryFailureAction" type="tns:retryFailureActionType" minOccurs="0"/>
+            <xs:element name="retrySuccessAction" type="tns:retrySuccessActionType" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:simpleType name="idType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="ReturnValueType">
+        <xs:annotation>
+            <xs:documentation>Return value from java code can chain another action using return
+                values</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="value" type="tns:idType" use="required"/>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:element name="exponentialBackoff">
+        <xs:annotation>
+            <xs:documentation>Setting this will cause retry attempts to use exponentialBackoff
+                algorithm</xs:documentation>
+        </xs:annotation>
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="humanIntervention">
+        <xs:annotation>
+            <xs:documentation>This action causes the activity to freeze</xs:documentation>
+        </xs:annotation>
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="replayScope">
+        <xs:annotation>
+            <xs:documentation>This action replays the immediate enclosing scope</xs:documentation>
+        </xs:annotation>
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="rethrowFault">
+        <xs:annotation>
+            <xs:documentation>This action will rethrow the fault</xs:documentation>
+        </xs:annotation>
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="retryCount" type="xs:positiveInteger">
+        <xs:annotation>
+            <xs:documentation>This value is used to identify number of retries</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="retryFailureActionType">
+        <xs:annotation>
+            <xs:documentation>This is the action to be chained if retry attempts
+                fail</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="retrySuccessActionType">
+        <xs:annotation>
+            <xs:documentation>This is the action to be chained if retry attempts is
+                successful</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:element name="retryInterval" type="xs:unsignedLong">
+        <xs:annotation>
+            <xs:documentation>This is the delay in milliseconds of retry attempts</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="abort">
+        <xs:annotation>
+            <xs:documentation>This action terminates the process</xs:documentation>
+        </xs:annotation>
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="Properties">
+        <xs:annotation>
+            <xs:documentation>Properties that can be passes to a custom java
+                class</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="propertySet" type="tns:PropertySetType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="PropertySetType">
+        <xs:sequence>
+            <xs:element name="property" type="tns:PropertyValueType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="tns:idType" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="PropertyValueType">
+        <xs:simpleContent>
+            <xs:extension base="tns:idType">
+                <xs:attribute name="name" type="tns:idType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="faultPolicy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:Conditions"/>
+                <xs:element ref="tns:Actions"/>
+                <xs:element ref="tns:Properties" minOccurs="0"/>
+                <!--Every policy has on Conditions and and one Actions, however, Properties is optional -->
+            </xs:sequence>
+            <xs:attribute name="id" type="tns:idType" use="required"/>
+            <xs:attribute name="version" type="xs:string" default="2.0.1"/>
+        </xs:complexType>
+        <xs:key name="UniqueActionId">
+            <xs:selector xpath="tns:Actions/tns:Action"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:key name="UniquePropertySetId">
+            <xs:selector xpath="tns:Properties/tns:property_set"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref name="RetryActionRef" refer="tns:UniqueActionId">
+            <xs:selector xpath="tns:Actions/tns:Action/tns:retry/tns:retryFailureAction"/>
+            <xs:field xpath="@ref"/>
+        </xs:keyref>
+        <xs:keyref name="RetrySuccessActionRef" refer="tns:UniqueActionId">
+            <xs:selector xpath="tns:Actions/tns:Action/tns:retry/tns:retrySuccessAction"/>
+            <xs:field xpath="@ref"/>
+        </xs:keyref>
+        <xs:keyref name="JavaActionRef" refer="tns:UniqueActionId">
+            <xs:selector xpath="tns:Actions/tns:Action/tns:javaAction/tns:returnValue"/>
+            <xs:field xpath="@ref"/>
+        </xs:keyref>
+        <xs:keyref name="ConditionActionRef" refer="tns:UniqueActionId">
+            <xs:selector xpath="tns:Conditions/tns:faultName/tns:condition/tns:action"/>
+            <xs:field xpath="@ref"/>
+        </xs:keyref>
+        <xs:keyref name="JavaDefaultActionRef" refer="tns:UniqueActionId">
+            <xs:selector xpath="tns:Actions/tns:Action/tns:javaAction"/>
+            <xs:field xpath="@defaultAction"/>
+        </xs:keyref>
+        <xs:keyref name="JavaPropertySetRef" refer="tns:UniquePropertySetId">
+            <xs:selector xpath="tns:Actions/tns:Action/tns:javaAction"/>
+            <xs:field xpath="@property_set"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:element name="faultPolicies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:faultPolicy" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

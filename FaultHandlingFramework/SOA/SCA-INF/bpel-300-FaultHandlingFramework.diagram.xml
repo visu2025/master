@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="RouteToFeatureMediator_ep">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="281" width="137" height="96">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="274" width="156" height="110">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="RouteToFeatureMediator_ep" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel-300-FaultHandlingFramework/SampleFeatureRouter/RouteToFeatureMediator#wsdl.interface(execute_ptt)" callbackInterface="http://xmlns.oracle.com/bpel-300-FaultHandlingFramework/SampleFeatureRouter/RouteToFeatureMediator#wsdl.interface(callback_ptt)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>execute</dgm:item>
+            <dgm:item>callback</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gComponent name="RouteToFeatureMediator">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="266" width="130" height="236">
+            <dgm:borderColor r="128" g="92" b="148"/>
+            <dgm:lightBgColor r="208" g="169" b="227"/>
+            <dgm:darkBgColor r="183" g="132" b="212"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="216" Y="259" width="150" height="252">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="RouteToFeatureMediator" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel-300-FaultHandlingFramework/SampleFeatureRouter/RouteToFeatureMediator#wsdl.interface(execute_ptt)" callbackInterface="http://xmlns.oracle.com/bpel-300-FaultHandlingFramework/SampleFeatureRouter/RouteToFeatureMediator#wsdl.interface(callback_ptt)"/>
+        <dgm:outputPort name="Action_ora_retry.action_ora_retry_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_retry#wsdl.interface(Action_ora_retry)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_retry#wsdl.interface(Action_ora_retryCallback)"/>
+        <dgm:outputPort name="Action_ora_human_intervention.action_ora_human_intervention_client" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention#wsdl.interface(Action_ora_human_intervention)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention#wsdl.interface(Action_ora_human_interventionCallback)"/>
+        <dgm:outputPort name="Action_ora_terminate.action_ora_terminate_client" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_terminate#wsdl.interface(Action_ora_terminate)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_terminate#wsdl.interface(Action_ora_terminateCallback)"/>
+        <dgm:outputPort name="Action_ora_rethrow_fault.action_ora_rethrow_fault_client" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_rethrow_fault#wsdl.interface(Action_ora_rethrow_fault)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_rethrow_fault#wsdl.interface(Action_ora_rethrow_faultCallback)"/>
+        <dgm:outputPort name="Action_ora_replay_scope.action_ora_replay_scope_client" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_replay_scope#wsdl.interface(Action_ora_replay_scope)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_replay_scope#wsdl.interface(Action_ora_replay_scopeCallback)"/>
+        <dgm:outputPort name="Action_ora_java.action_ora_java_client" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_java#wsdl.interface(Action_ora_java)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_java#wsdl.interface(Action_ora_javaCallback)"/>
+        <dgm:outputPort name="Throw_vs_Reply.throw_vs_reply_client" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply#wsdl.interface(Throw_vs_Reply)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply#wsdl.interface(Throw_vs_ReplyCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="190" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/mediator/resource/image/mediator_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="FaultGeneratorBPELProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="773" Y="353" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="763" Y="346" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="faultgeneratorbpelprocess_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_retry">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="26" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="19" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_retry_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_retry#wsdl.interface(Action_ora_retry)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_retry#wsdl.interface(Action_ora_retryCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_human_intervention">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="121" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="114" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_human_intervention_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention#wsdl.interface(Action_ora_human_intervention)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention#wsdl.interface(Action_ora_human_interventionCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_terminate">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="216" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="209" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_terminate_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_terminate#wsdl.interface(Action_ora_terminate)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_terminate#wsdl.interface(Action_ora_terminateCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_rethrow_fault">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="311" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="304" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_rethrow_fault_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_rethrow_fault#wsdl.interface(Action_ora_rethrow_fault)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_rethrow_fault#wsdl.interface(Action_ora_rethrow_faultCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_replay_scope">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="406" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="399" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_replay_scope_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_replay_scope#wsdl.interface(Action_ora_replay_scope)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_replay_scope#wsdl.interface(Action_ora_replay_scopeCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Action_ora_java">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="501" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="494" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="action_ora_java_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_java#wsdl.interface(Action_ora_java)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_java#wsdl.interface(Action_ora_javaCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="Throw_vs_Reply">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="596" width="130" height="61">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="459" Y="589" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="throw_vs_reply_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply#wsdl.interface(Throw_vs_Reply)" callbackInterface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply#wsdl.interface(Throw_vs_ReplyCallback)"/>
+        <dgm:outputPort name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess#wsdl.interface(FaultGeneratorBPELProcess)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="RouteToFeatureMediator_ep" target="RouteToFeatureMediator/RouteToFeatureMediator" width="2">
+        <dgm:gSegment X1="168" Y1="291" X2="216" Y2="291"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_retry/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="51" X2="739" Y2="51"/>
+        <dgm:gSegment X1="739" Y1="51" X2="739" Y2="378"/>
+        <dgm:gSegment X1="739" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_retry.action_ora_retry_client" target="Action_ora_retry/action_ora_retry_client" width="2">
+        <dgm:gSegment X1="366" Y1="291" X2="390" Y2="291"/>
+        <dgm:gSegment X1="390" Y1="291" X2="390" Y2="51"/>
+        <dgm:gSegment X1="390" Y1="51" X2="459" Y2="51"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_human_intervention.action_ora_human_intervention_client" target="Action_ora_human_intervention/action_ora_human_intervention_client" width="2">
+        <dgm:gSegment X1="366" Y1="316" X2="405" Y2="316"/>
+        <dgm:gSegment X1="405" Y1="316" X2="405" Y2="146"/>
+        <dgm:gSegment X1="405" Y1="146" X2="459" Y2="146"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_human_intervention/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="146" X2="724" Y2="146"/>
+        <dgm:gSegment X1="724" Y1="146" X2="724" Y2="378"/>
+        <dgm:gSegment X1="724" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_terminate.action_ora_terminate_client" target="Action_ora_terminate/action_ora_terminate_client" width="2">
+        <dgm:gSegment X1="366" Y1="341" X2="420" Y2="341"/>
+        <dgm:gSegment X1="420" Y1="341" X2="420" Y2="241"/>
+        <dgm:gSegment X1="420" Y1="241" X2="459" Y2="241"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_terminate/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="241" X2="709" Y2="241"/>
+        <dgm:gSegment X1="709" Y1="241" X2="709" Y2="378"/>
+        <dgm:gSegment X1="709" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_rethrow_fault.action_ora_rethrow_fault_client" target="Action_ora_rethrow_fault/action_ora_rethrow_fault_client" width="2">
+        <dgm:gSegment X1="366" Y1="366" X2="435" Y2="366"/>
+        <dgm:gSegment X1="435" Y1="366" X2="435" Y2="336"/>
+        <dgm:gSegment X1="435" Y1="336" X2="459" Y2="336"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_rethrow_fault/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="336" X2="694" Y2="336"/>
+        <dgm:gSegment X1="694" Y1="336" X2="694" Y2="378"/>
+        <dgm:gSegment X1="694" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_replay_scope.action_ora_replay_scope_client" target="Action_ora_replay_scope/action_ora_replay_scope_client" width="2">
+        <dgm:gSegment X1="366" Y1="391" X2="435" Y2="391"/>
+        <dgm:gSegment X1="435" Y1="391" X2="435" Y2="431"/>
+        <dgm:gSegment X1="435" Y1="431" X2="459" Y2="431"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_replay_scope/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="431" X2="634" Y2="431"/>
+        <dgm:gSegment X1="634" Y1="431" X2="634" Y2="378"/>
+        <dgm:gSegment X1="634" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Action_ora_java.action_ora_java_client" target="Action_ora_java/action_ora_java_client" width="2">
+        <dgm:gSegment X1="366" Y1="416" X2="420" Y2="416"/>
+        <dgm:gSegment X1="420" Y1="416" X2="420" Y2="526"/>
+        <dgm:gSegment X1="420" Y1="526" X2="459" Y2="526"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Action_ora_java/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="526" X2="649" Y2="526"/>
+        <dgm:gSegment X1="649" Y1="526" X2="649" Y2="378"/>
+        <dgm:gSegment X1="649" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="Throw_vs_Reply/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="609" Y1="621" X2="664" Y2="621"/>
+        <dgm:gSegment X1="664" Y1="621" X2="664" Y2="378"/>
+        <dgm:gSegment X1="664" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/Throw_vs_Reply.throw_vs_reply_client" target="Throw_vs_Reply/throw_vs_reply_client" width="2">
+        <dgm:gSegment X1="366" Y1="441" X2="405" Y2="441"/>
+        <dgm:gSegment X1="405" Y1="441" X2="405" Y2="621"/>
+        <dgm:gSegment X1="405" Y1="621" X2="459" Y2="621"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="RouteToFeatureMediator/FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client" target="FaultGeneratorBPELProcess/faultgeneratorbpelprocess_client" width="2">
+        <dgm:gSegment X1="366" Y1="466" X2="390" Y2="466"/>
+        <dgm:gSegment X1="390" Y1="466" X2="390" Y2="685"/>
+        <dgm:gSegment X1="390" Y1="685" X2="679" Y2="685"/>
+        <dgm:gSegment X1="679" Y1="685" X2="679" Y2="378"/>
+        <dgm:gSegment X1="679" Y1="378" X2="763" Y2="378"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

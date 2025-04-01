@@ -1,0 +1,12 @@
+<adapter-config name="jmsService" adapter="jms" wsdlLocation="../WSDLs/jmsService.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="IntegratedWebLogicServer" location="eis/jms/test" UIJmsProvider="WLSJMS"/>
+  <endpoint-activation portType="Consume_Message_ptt" operation="Consume_Message">
+    <activation-spec className="oracle.tip.adapter.jms.inbound.JmsConsumeActivationSpec">
+      <property name="DestinationName" value="jms/b2b/TransportDispatcherQueue"/>
+      <property name="UseMessageListener" value="false"/>
+      <property name="PayloadType" value="TextMessage"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="BPELProcessCCvalidation"
+     targetNamespace="http://xmlns.oracle.com/AsfawSOAApplication/CCTypeValidation/BPELProcessCCvalidation"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/AsfawSOAApplication/CCTypeValidation/BPELProcessCCvalidation"
+     xmlns:ns1="http://www.example.org/CCNum"
+     xmlns:ns2="http://www.example.org/CCtype"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://DESKTOP-BPN3HRI:7101/soa-infra/services/default/CCTypeValidation!1.0/WSDLs/BPELProcessCCvalidation.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="BPELProcessCCvalidation">
+        <plnk:role name="BPELProcessCCvalidationProvider" portType="client:BPELProcessCCvalidation"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.example.org/CCNum" schemaLocation="../Schemas/CCNum_1.xsd"/>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.example.org/CCtype" schemaLocation="../Schemas/CCType_1.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="BPELProcessCCvalidationRequestMessage">
+        <wsdl:part name="payload" element="ns1:CCNum"/>
+    </wsdl:message>
+    <wsdl:message name="BPELProcessCCvalidationResponseMessage">
+        <wsdl:part name="payload" element="ns2:CCType"/>
+    </wsdl:message>
+    <wsdl:portType name="BPELProcessCCvalidation">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:BPELProcessCCvalidationRequestMessage"/>
+            <wsdl:output message="client:BPELProcessCCvalidationResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BPELProcessCCvalidationBinding" type="client:BPELProcessCCvalidation">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="bpelprocessccvalidation_client_ep">
+        <wsdl:port name="BPELProcessCCvalidation_pt" binding="client:BPELProcessCCvalidationBinding">
+            <soap:address location="http://DESKTOP-BPN3HRI:7101/soa-infra/services/default/CCTypeValidation/bpelprocessccvalidation_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

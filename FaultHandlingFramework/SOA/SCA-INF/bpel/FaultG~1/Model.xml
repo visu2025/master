@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Apr 07 15:52:06 MDT 2010
+  Author:  greg
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+--><process name="FaultGeneratorBPELProcess" targetNamespace="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:client="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:xpath20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:mhdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.mediator.service.common.functions.MediatorExtnFunction" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:ns1="http://xmlns.oracle.com/FaultHandlingFrameworkSample" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:socket="http://www.oracle.com/XSL/Transform/java/oracle.tip.adapter.socket.ProtocolTranslator" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" id="BpPrc0">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <bpelx:annotation>
+    <bpelx:analysis>
+      <bpelx:property name="wsdlFile">
+        FaultGeneratorBPELProcess.wsdl
+      </bpelx:property>
+    </bpelx:analysis>
+  </bpelx:annotation>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="faultgeneratorbpelprocess_client" partnerLinkType="client:FaultGeneratorBPELProcess" myRole="FaultGeneratorBPELProcessProvider"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:FaultGeneratorBPELProcessRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:FaultGeneratorBPELProcessResponseMessage"/>
+    <variable name="runtimeFault" messageType="bpelx:RuntimeFaultMessage"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main" id="BpSeq0">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in FaultGeneratorBPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="faultgeneratorbpelprocess_client" portType="client:FaultGeneratorBPELProcess" operation="process" variable="inputVariable" createInstance="yes" id="BpRcv0"/>
+
+    <!-- Generate reply to synchronous request -->
+    <switch name="SwitchForFaultType" id="BpSwt0">
+      <case condition="bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request') = 'throw-vs-reply'">
+        <sequence id="BpSeq1">
+            <assign name="AssignForThrow" id="BpAss0">
+                <copy>
+                  <from variable="inputVariable" part="payload" query="/ns1:sampleRequest/ns1:request"/>
+                  <to variable="runtimeFault" part="code"/>
+                </copy>
+                <copy>
+                  <from expression="'Fault Management Framework Sample'"/>
+                  <to variable="runtimeFault" part="summary"/>
+                </copy>
+                <copy>
+                  <from expression="concat('Fault Management Framework sample for: ', bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request'))"/>
+                  <to variable="runtimeFault" part="detail"/>
+                </copy>
+            </assign>
+          <wait name="WaitToForceDehydrate" for="'PT5S'" id="BpWai0"/>
+          <throw name="ThrowFault-FrameworkWillNotCatch" faultName="client:runtimeFault" faultVariable="runtimeFault" id="BpThw0"/>
+        </sequence>
+      </case>
+      <case condition="bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request') = 'reply-with-fault'">
+        <sequence id="BpSeq2">
+            <assign name="AssignForReply" id="BpAss1">
+                <copy>
+                  <from variable="inputVariable" part="payload" query="/ns1:sampleRequest/ns1:request"/>
+                  <to variable="runtimeFault" part="code"/>
+                </copy>
+                <copy>
+                  <from expression="'Fault Management Framework Sample'"/>
+                  <to variable="runtimeFault" part="summary"/>
+                </copy>
+                <copy>
+                  <from expression="concat('Fault Management Framework sample for: ', bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request'))"/>
+                  <to variable="runtimeFault" part="detail"/>
+                </copy>
+            </assign>
+          <wait name="WaitToForceDehydrate" for="'PT5S'" id="BpWai1"/>
+          <reply name="ReplyWithFault-FrameworkWillCatch" faultName="client:runtimeFault" variable="runtimeFault" partnerLink="faultgeneratorbpelprocess_client" portType="client:FaultGeneratorBPELProcess" operation="process" id="BpRpl0"/>
+        </sequence>
+      </case>
+      <case condition="bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request') = 'do-not-throw'">
+        <empty name="DoNotThrow" id="BpEmp0"/>
+      </case>
+      <otherwise>
+        <sequence id="BpSeq3">
+            <assign name="AssignForThrow" id="BpAss2">
+            <copy>
+              <from variable="inputVariable" part="payload" query="/ns1:sampleRequest/ns1:request"/>
+              <to variable="runtimeFault" part="code"/>
+            </copy>
+            <copy>
+              <from expression="'Fault Management Framework Sample'"/>
+              <to variable="runtimeFault" part="summary"/>
+            </copy>
+            <copy>
+              <from expression="concat('Fault Management Framework sample for: ', bpws:getVariableData('inputVariable','payload','/ns1:sampleRequest/ns1:request'))"/>
+              <to variable="runtimeFault" part="detail"/>
+            </copy>
+          </assign>
+            <throw name="ThrowFault" faultName="client:runtimeFault" faultVariable="runtimeFault" id="BpThw1"/>
+        </sequence>
+      </otherwise>
+    </switch>
+    <assign name="AssignResponse" id="BpAss3">
+      <copy>
+        <from variable="inputVariable" part="payload" query="/ns1:sampleRequest/ns1:request"/>
+        <to variable="outputVariable" part="payload" query="/ns1:sampleResponse/ns1:sampleType"/>
+      </copy>
+      <copy>
+        <from expression="'If you get this, the process did not throw'"/>
+        <to variable="outputVariable" part="payload" query="/ns1:sampleResponse/ns1:responseMessage"/>
+      </copy>
+    </assign>
+    <reply name="replyOutput" partnerLink="faultgeneratorbpelprocess_client" portType="client:FaultGeneratorBPELProcess" operation="process" variable="outputVariable" id="BpRpl1"/>
+  </sequence>
+</process>

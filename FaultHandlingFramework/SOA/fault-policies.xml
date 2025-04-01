@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<faultPolicies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://schemas.oracle.com/bpel/faultpolicy xsd/fault-policies.xsd"
+               xmlns="http://schemas.oracle.com/bpel/faultpolicy">
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-retry
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-retry-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-retry"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-retry">
+               <retry>
+                  <retryCount>3</retryCount>
+                  <retryInterval>5</retryInterval>
+                  <exponentialBackoff/>
+                  <retryFailureAction ref="ora-terminate"/>
+               </retry>
+            </Action>
+ 
+            <Action id="ora-terminate">
+                <abort/>
+            </Action>
+
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-human-intervention
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-human-intervention-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-human-intervention"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-human-intervention">
+                <humanIntervention/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-terminate
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-terminate-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-terminate"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-terminate">
+                <abort/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-rethrow-fault
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-terminate-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-rethrow-fault"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-rethrow-fault">
+                <rethrowFault/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-replay-scope
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-replay-scope-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-replay-scope"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-replay-scope">
+                <replayScope/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for ora-java
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="ora-java-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-java"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-java">
+                <!-- defaultAction is a required attribute, but propertySet is optional -->
+                <javaAction className="com.oracle.samples.FaultManagementSample"
+                            defaultAction="ora-terminate"
+                            propertySet="ora-java-properties">
+
+                    <!-- Possible return values and associated action references -->
+                    <returnValue value="RETRY" ref="ora-retry"/>
+                    <returnValue value="RETHROW" ref="ora-rethrow-fault"/>
+                    <returnValue value="TERMINATE" ref="ora-terminate"/>
+
+                </javaAction>
+            </Action>
+            
+            <Action id="ora-retry">
+               <retry>
+                  <retryCount>2</retryCount>
+                  <retryInterval>5</retryInterval>
+                  <exponentialBackoff/>
+                  <retryFailureAction ref="ora-rethrow-fault"/>
+               </retry>
+            </Action>
+ 
+            <Action id="ora-rethrow-fault">
+                <rethrowFault/>
+            </Action>
+
+            <Action id="ora-terminate">
+                <abort/>
+            </Action>
+            
+        </Actions>
+
+        <Properties>
+            <propertySet name="ora-java-properties">
+                <property name="one">Property "one" value :D</property>
+                <property name="email">sample@oracle.com</property>
+                <property name="name">Fault Management Framework Sample</property>
+                <property name="whatever">Whatever property you need to pass into the ora-java class</property>
+            </propertySet>
+        </Properties>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for throw-vs-reply
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="throw-vs-reply-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-rethrow-fault"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-rethrow-fault">
+                <rethrowFault/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for remote faults
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="remoteFaultPolicy"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:bpelx="http://schemas.oracle.com/bpel/extension" name="bpelx:remoteFault">
+                <condition>
+                    <action ref="ora-human-intervention"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-human-intervention">
+                <humanIntervention/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+    <!--
+    ================================================================================
+        Fault Policy for mediator
+    ================================================================================
+    -->
+    <faultPolicy version="1.0.0" id="mediator-sample"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.oracle.com/bpel/faultpolicy"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <Conditions>
+
+            <faultName xmlns:run="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess" name="run:runtimeFault">
+                <condition>
+                    <action ref="ora-human-intervention"/>
+                </condition>
+            </faultName>
+
+            <faultName xmlns:medns="http://schemas.oracle.com/mediator/faults" name="medns:mediatorFault">
+                <condition>
+                    <test>
+                        contains($fault.mediatorErrorCode, "TYPE_DATA_VALIDATION")
+                    </test>
+                    <action ref="ora-human-intervention"/>
+                </condition>
+            </faultName>
+
+        </Conditions>
+        
+        <Actions>
+ 
+            <Action id="ora-human-intervention">
+                <humanIntervention/>
+            </Action>
+            
+        </Actions>
+
+    </faultPolicy>
+
+</faultPolicies>

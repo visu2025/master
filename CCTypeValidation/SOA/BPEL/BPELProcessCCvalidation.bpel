@@ -1,0 +1,102 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Nov 09 12:41:57 IST 2020
+  Author:  USER
+  Type: BPEL 2.0 Process
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELProcessCCvalidation"
+               targetNamespace="http://xmlns.oracle.com/AsfawSOAApplication/CCTypeValidation/BPELProcessCCvalidation"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/AsfawSOAApplication/CCTypeValidation/BPELProcessCCvalidation"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/OracleRulesCCvalidation/OracleRulesCCvalidation_DecisionService_1"
+         xmlns:ns4="http://xmlns.oracle.com/bpel/rules" xmlns:ns2="http://www.example.org/CCNum"
+         xmlns:ns3="http://xmlns.oracle.com/bpel" xmlns:ns5="http://www.example.org/CCtype">
+
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/AsfawSOAApplication/CCTypeValidation/BPELProcessCCvalidation" location="../WSDLs/BPELProcessCCvalidation.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="bpelprocessccvalidation_client" partnerLinkType="client:BPELProcessCCvalidation" myRole="BPELProcessCCvalidationProvider"/>
+    <partnerLink name="OracleRulesCCvalidation.OracleRulesCCvalidation_DecisionService_1"
+                 partnerRole="IDecisionService_Role" partnerLinkType="ns1:IDecisionService_PLT"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="client:BPELProcessCCvalidationRequestMessage"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="client:BPELProcessCCvalidationResponseMessage"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in BPELProcessCCvalidation.wsdl) -->
+    <receive name="receiveInput" partnerLink="bpelprocessccvalidation_client" portType="client:BPELProcessCCvalidation" operation="process" variable="inputVariable" createInstance="yes"/>
+    <scope name="Rule1">
+      <bpelx:annotation>
+        <bpelx:pattern patternName="bpelx:decide"></bpelx:pattern>
+      </bpelx:annotation>
+      <variables>
+        <variable name="dsIn" messageType="ns1:callFunctionStatelessMessage"/>
+        <variable name="dsOut" messageType="ns1:callFunctionStatelessDecisionMessage"/>
+      </variables>
+      <sequence name="Sequence1">
+        <assign name="Facts_To_Rule_Service">
+          <copy>
+            <from>$inputVariable.payload</from>
+            <to>$dsIn.payload/ns1:parameterList/ns4:string</to>
+          </copy>
+        </assign>
+        <assign name="BPEL_Header">
+          <copy>
+            <from>"OracleRulesCCvalidation_DecisionService_1"</from>
+            <to>$dsIn.payload/@name</to>
+          </copy>
+        </assign>
+        <invoke name="Invoke" partnerLink="OracleRulesCCvalidation.OracleRulesCCvalidation_DecisionService_1"
+                portType="ns1:IDecisionService" operation="callFunctionStateless" inputVariable="dsIn"
+                outputVariable="dsOut"/>
+        <assign name="Rule_Service_To_Facts">
+          <copy>
+            <from>$dsOut.payload/ns1:resultList/ns4:string</from>
+            <to>$outputVariable.payload</to>
+          </copy>
+        </assign>
+      </sequence>
+    </scope>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="bpelprocessccvalidation_client" portType="client:BPELProcessCCvalidation" operation="process" variable="outputVariable"/>
+  </sequence>
+</process>

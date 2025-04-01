@@ -1,0 +1,29 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.oracle.com/bpel/samples"
+     targetNamespace="http://www.oracle.com/bpel/samples">
+    <xs:simpleType name="faultFrameworkAction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ora-retry"/>
+            <xs:enumeration value="ora-human-intervention"/>
+            <xs:enumeration value="ora-terminate"/>
+            <xs:enumeration value="ora-replay-scope"/>
+            <xs:enumeration value="ora-rethrow-fault"/>
+            <xs:enumeration value="ora-java"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="faultFrameworkRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="faultAction" type="faultFrameworkAction"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="faultFrameworkResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="faultAction" type="faultFrameworkAction"/>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

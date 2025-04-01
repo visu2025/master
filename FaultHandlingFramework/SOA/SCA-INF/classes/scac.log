@@ -1,0 +1,124 @@
+2021-10-09 22:36:16.393/4.787 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2021-10-09 22:36:16.503/4.897 Oracle Coherence 12.2.1.3.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/C:/Oracle/Middleware/Oracle_Home/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2021-10-09 22:36:16.507/4.900 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2021-10-09 22:36:16.522/4.915 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2021-10-09 22:36:16.524/4.917 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2021-10-09 22:36:16.526/4.919 Oracle Coherence 12.2.1.3.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+
+Oracle Coherence Version 12.2.1.3.0 Build 68243
+ Grid Edition: Development mode
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+2021-10-09 22:36:17.140/5.533 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.ExtensibleConfigurableCacheFactory
+2021-10-09 22:36:17.959/6.352 Oracle Coherence GE 12.2.1.3.0 <Info> (thread=main, member=n/a): The cluster name has not been configured, a value of "Admin's cluster" has been automatically generated
+Oct 09, 2021 10:36:19 PM oracle.soa.scac.ValidateComposite loadWSDLs
+WARNING: Validating WSDLs from WSDLManager....  with option UseSoaInfraMds:false
+Oct 09, 2021 10:36:19 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+Oct 09, 2021 10:36:19 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_retry.bpel" ...
+Oct 09, 2021 10:36:20 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_retry" in 152.9 milliseconds [nodes 12=0+12, 78.5 nodes/sec]
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_retry" in 2.321 seconds
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.8 milliseconds
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_retry" in 31.2 milliseconds
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_terminate.bpel" ...
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_terminate" in 39.8 milliseconds [nodes 12=0+12, 301.6 nodes/sec]
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_terminate" in 489.4 milliseconds
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.6 milliseconds
+Oct 09, 2021 10:36:23 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_terminate" in 14.0 milliseconds
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_java.bpel" ...
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_java" in 32.6 milliseconds [nodes 19=0+19, 582.7 nodes/sec]
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_java" in 537.5 milliseconds
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.6 milliseconds
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_java" in 15.1 milliseconds
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: validating "FaultGeneratorBPELProcess.bpel" ...
+Oct 09, 2021 10:36:24 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:24 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:24 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:24 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "FaultGeneratorBPELProcess" in 39.9 milliseconds [nodes 20=0+20, 501.9 nodes/sec]
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "FaultGeneratorBPELProcess" in 321.5 milliseconds
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.9 milliseconds
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "FaultGeneratorBPELProcess" in 16.6 milliseconds
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Throw_vs_Reply.bpel" ...
+Oct 09, 2021 10:36:25 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:25 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:25 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Throw_vs_Reply" in 51.0 milliseconds [nodes 21=1+20, 412.1 nodes/sec]
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Throw_vs_Reply" in 549.0 milliseconds
+Oct 09, 2021 10:36:25 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 6 files in 1.0 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Throw_vs_Reply" in 22.2 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_rethrow_fault.bpel" ...
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_rethrow_fault" in 16.2 milliseconds [nodes 12=0+12, 740.6 nodes/sec]
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_rethrow_fault" in 271.1 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 0.6 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_rethrow_fault" in 21.7 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_human_intervention.bpel" ...
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_human_intervention" in 15.3 milliseconds [nodes 12=0+12, 786.7 nodes/sec]
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_human_intervention" in 320.3 milliseconds
+Oct 09, 2021 10:36:26 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 1.2 milliseconds
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_human_intervention" in 166.6 milliseconds
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: validating "Action_ora_replay_scope.bpel" ...
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "Action_ora_replay_scope" in 43.3 milliseconds [nodes 21=0+21, 484.8 nodes/sec]
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "Action_ora_replay_scope" in 419.7 milliseconds
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 4 files in 8.9 milliseconds
+Oct 09, 2021 10:36:27 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "Action_ora_replay_scope" in 42.0 milliseconds
+Schema validation failed with exception "null"
+oracle.xml.parser.schema.XSDException
+	at oracle.xml.parser.schema.XSDBuilder.buildSchema(XSDBuilder.java:1141)
+	at oracle.xml.parser.schema.XSDBuilder.build(XSDBuilder.java:634)
+	at oracle.soa.scac.ValidationFaultUtil.validateSourceWithSchema(ValidationFaultUtil.java:182)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:241)
+	at oracle.soa.scac.ValidationFaultUtil.validateWithSchema(ValidationFaultUtil.java:225)
+	at oracle.soa.scac.ValidateComposite.validateFaultPolicy(ValidateComposite.java:1413)
+	at oracle.soa.scac.ValidateComposite.doValidation0(ValidateComposite.java:613)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:586)
+	at oracle.soa.scac.ValidateComposite.run0(ValidateComposite.java:234)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:215)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:207)
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0

@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/ns:composite/ns:reference[@name='SOAPReference']</loc>
+      <line>37</line>
+      <col>81</col>
+      <file>C:\JDeveloper\mywork\SampleApplication\mediator\SOA\composite.xml</file>
+      <name>C:\JDeveloper\mywork\SampleApplication\mediator\SOA\composite.xml</name>
+      <fix/>
+      <msg>Failed to Find Binding "SOAPReference":"null" in WSDL Manager</msg>
+   </Fault>
+</Faults>

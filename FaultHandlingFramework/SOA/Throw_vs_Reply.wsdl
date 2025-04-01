@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Throw_vs_Reply"
+             targetNamespace="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Throw_vs_Reply"
+             xmlns:ns1="http://xmlns.oracle.com/FaultHandlingFrameworkSample"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/FaultHandlingFrameworkSample" schemaLocation="SCA-INF/classes/xsd/FaultHandlingFrameworkSample.xsd" />
+		</schema>
+	</wsdl:types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="Throw_vs_ReplyRequestMessage">
+		<wsdl:part name="payload" element="ns1:sampleRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="Throw_vs_ReplyResponseMessage">
+		<wsdl:part name="payload" element="ns1:sampleResponse" />
+	</wsdl:message>
+
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- portType implemented by the Throw_vs_Reply BPEL process -->
+	<wsdl:portType name="Throw_vs_Reply">
+		<wsdl:operation name="process">
+			<wsdl:input message="client:Throw_vs_ReplyRequestMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- portType implemented by the requester of Throw_vs_Reply BPEL process
+	for asynchronous callback purposes
+	-->
+	<wsdl:portType name="Throw_vs_ReplyCallback">
+		<wsdl:operation name="processResponse">
+			<wsdl:input message="client:Throw_vs_ReplyResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	the Throw_vs_Reply partnerLinkType binds the provider and
+	requester portType into an asynchronous conversation.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<plnk:partnerLinkType name="Throw_vs_Reply">
+		<plnk:role name="Throw_vs_ReplyProvider">
+			<plnk:portType name="client:Throw_vs_Reply"/>
+		</plnk:role>
+		<plnk:role name="Throw_vs_ReplyRequester">
+			<plnk:portType name="client:Throw_vs_ReplyCallback"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

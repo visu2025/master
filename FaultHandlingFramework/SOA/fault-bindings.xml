@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<faultPolicyBindings version="1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.oracle.com/bpel/faultpolicy xsd/fault-bindings.xsd"
+    xmlns="http://schemas.oracle.com/bpel/faultpolicy">
+
+    <composite faultPolicy="remoteFaultPolicy"/>
+
+    <component faultPolicy="ora-retry-sample">
+        <name>Action_ora_retry</name>
+    </component>
+
+    <component faultPolicy="ora-human-intervention-sample">
+        <name>Action_ora_human_intervention</name>
+    </component>
+
+    <component faultPolicy="ora-terminate-sample">
+        <name>Action_ora_terminate</name>
+    </component>
+
+    <component faultPolicy="ora-rethrow-fault-sample">
+        <name>Action_ora_rethrow_fault</name>
+    </component>
+
+    <component faultPolicy="ora-replay-scope-sample">
+        <name>Action_ora_replay_scope</name>
+    </component>
+
+    <component faultPolicy="ora-java-sample">
+        <name>Action_ora_java</name>
+    </component>
+
+    <component faultPolicy="throw-vs-reply-sample">
+        <name>Throw_vs_Reply</name>
+    </component>
+
+    <component faultPolicy="mediator-sample">
+        <name>RouteToFeatureMediator</name>
+    </component>
+
+</faultPolicyBindings>

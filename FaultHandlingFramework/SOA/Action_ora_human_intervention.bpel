@@ -1,0 +1,131 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Apr 09 14:00:54 MDT 2010
+  Author:  greg
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="Action_ora_human_intervention"
+         targetNamespace="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/FaultGeneratorBPELProcess"
+         xmlns:ns2="http://xmlns.oracle.com/FaultHandlingFrameworkSample">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <bpelx:annotation>
+        <bpelx:analysis>
+            <bpelx:property name="wsdlFile">
+                <![CDATA[Action_ora_human_intervention.wsdl]]>
+            </bpelx:property>
+        </bpelx:analysis>
+    </bpelx:annotation>
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="action_ora_human_intervention_client" partnerLinkType="client:Action_ora_human_intervention" myRole="Action_ora_human_interventionProvider" partnerRole="Action_ora_human_interventionRequester"/>
+        <partnerLink name="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client"
+                     partnerRole="FaultGeneratorBPELProcessProvider"
+                     partnerLinkType="ns1:FaultGeneratorBPELProcess"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:Action_ora_human_interventionRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:Action_ora_human_interventionResponseMessage"/>
+        <variable name="InvokeFaultGenerator_InputVariable"
+                  messageType="ns1:FaultGeneratorBPELProcessRequestMessage"/>
+        <variable name="InvokeFaultGenerator_OutputVariable"
+                  messageType="ns1:FaultGeneratorBPELProcessResponseMessage"/>
+    </variables>
+    <faultHandlers>
+        <catchAll>
+            <sequence>
+                <assign name="AssignCatchallResponse">
+                    <copy>
+                        <from variable="inputVariable" part="payload"
+                              query="/ns2:sampleRequest/ns2:request"/>
+                        <to variable="outputVariable" part="payload"
+                            query="/ns2:sampleResponse/ns2:sampleType"/>
+                    </copy>
+                    <copy>
+                        <from expression="'Unhandled Exception ... Catch All'"/>
+                        <to variable="outputVariable" part="payload"
+                            query="/ns2:sampleResponse/ns2:responseMessage"/>
+                    </copy>
+                </assign>
+                <invoke name="callbackFromCatchAll"
+                        inputVariable="outputVariable"
+                        partnerLink="action_ora_human_intervention_client"
+                        portType="client:Action_ora_human_interventionCallback"
+                        operation="processResponse"/>
+            </sequence>
+        </catchAll>
+    </faultHandlers>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in Action_ora_human_intervention.wsdl) -->
+        <receive name="receiveInput" partnerLink="action_ora_human_intervention_client" portType="client:Action_ora_human_intervention" operation="process" variable="inputVariable" createInstance="yes"/>
+
+        <assign name="AssignForInvoke">
+            <copy>
+                <from variable="inputVariable" part="payload"
+                      query="/ns2:sampleRequest/ns2:request"/>
+                <to variable="InvokeFaultGenerator_InputVariable" part="payload"
+                    query="/ns2:sampleRequest/ns2:request"/>
+            </copy>
+        </assign>
+        <invoke name="InvokeFaultGenerator"
+                inputVariable="InvokeFaultGenerator_InputVariable"
+                outputVariable="InvokeFaultGenerator_OutputVariable"
+                partnerLink="FaultGeneratorBPELProcess.faultgeneratorbpelprocess_client"
+                portType="ns1:FaultGeneratorBPELProcess" operation="process"/>
+        <assign name="AssignResponse">
+            <copy>
+                <from variable="inputVariable" part="payload"
+                      query="/ns2:sampleRequest/ns2:request"/>
+                <to variable="outputVariable" part="payload"
+                    query="/ns2:sampleResponse/ns2:sampleType"/>
+            </copy>
+            <copy>
+                <from expression="concat('This was a Fault Management Frameworks Sample for ', bpws:getVariableData('inputVariable','payload','/ns2:sampleRequest/ns2:request'))"/>
+                <to variable="outputVariable" part="payload"
+                    query="/ns2:sampleResponse/ns2:responseMessage"/>
+            </copy>
+        </assign>
+
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient" partnerLink="action_ora_human_intervention_client" portType="client:Action_ora_human_interventionCallback" operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

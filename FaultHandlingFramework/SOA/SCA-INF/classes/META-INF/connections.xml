@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="echo_client_ep" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://orabpm-server:8001/soa-infra/services/default/echo/echo_client_ep?WSDL" service="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echo_client_ep">
+                  <model name="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echo" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echo_client_ep">
+                        <port name="echo_pt" binding="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echoBinding" portType="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echo">
+                           <soap addressUrl="http://orabpm-server:8001/soa-infra/services/default/echo/echo_client_ep" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="process">
+                              <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <output name="" message="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echoResponseMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/sandbox_jws/echo/echo" localPart="processResponse" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="result" required="true" namespace="http://xmlns.oracle.com/sandbox_jws/echo/echo" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </output>
+                              <input name="" message="{http://xmlns.oracle.com/sandbox_jws/echo/echo}echoRequestMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/sandbox_jws/echo/echo" localPart="process" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="input" required="true" namespace="http://xmlns.oracle.com/sandbox_jws/echo/echo" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </input>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

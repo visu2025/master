@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="BPELProcessWSA"
+     targetNamespace="http://xmlns.oracle.com/AnuAnnaSOAApplication/WebServiceA/BPELProcessWSA"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/AnuAnnaSOAApplication/WebServiceA/BPELProcessWSA"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://lenovo:7101/soa-infra/services/default/WebServiceA!1.0/WSDLs/BPELProcessWSA.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="BPELProcessWSA">
+        <plnk:role name="BPELProcessWSAProvider" portType="client:BPELProcessWSA"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/AnuAnnaSOAApplication/WebServiceA/BPELProcessWSA"
+                 schemaLocation="http://lenovo:7101/soa-infra/services/default/WebServiceA/bpelprocesswsa_client_ep?XSD=../Schemas/BPELProcessWSA.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="BPELProcessWSARequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="BPELProcessWSAResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="BPELProcessWSA">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:BPELProcessWSARequestMessage"/>
+            <wsdl:output message="client:BPELProcessWSAResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BPELProcessWSABinding" type="client:BPELProcessWSA">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="bpelprocesswsa_client_ep">
+        <wsdl:port name="BPELProcessWSA_pt" binding="client:BPELProcessWSABinding">
+            <soap:address location="http://lenovo:7101/soa-infra/services/default/WebServiceA/bpelprocesswsa_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

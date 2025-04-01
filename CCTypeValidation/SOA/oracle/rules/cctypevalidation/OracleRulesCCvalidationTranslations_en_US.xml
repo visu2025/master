@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<properties>
+   <entry key="AG}-1e839a30:1759c6e1e25:-7b25">MASTERTYPE</entry>
+   <entry key="AG}-1e839a30:1759c6e1e25:-7b14">TestMASTERType</entry>
+   <entry key="AG}-1e839a30:1759c6e1e25:-7b26">VISATYPE</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b23">To Check the VISAType Business Rule</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b1b">To Pass the CCNum StartsWith 5 and validate</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b24">To Test the CC Validation Types</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b25">To Validate the MASTER Type CC</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b14">To Validate the Master Type CCNum</entry>
+   <entry key="DG}-1e839a30:1759c6e1e25:-7b26">To Validate the VISA Type CC</entry>
+   <entry key="AG}-1e839a30:1759c6e1e25:-7b23">TestVISAType_Success</entry>
+   <entry key="AG}-1e839a30:1759c6e1e25:-7b1b">TestVISAType_Failure</entry>
+</properties>

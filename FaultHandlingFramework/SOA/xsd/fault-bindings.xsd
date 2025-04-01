@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="http://schemas.oracle.com/bpel/faultpolicy"
+    xmlns:tns="http://schemas.oracle.com/bpel/faultpolicy"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="faultPolicyBindings">
+        <xs:annotation>
+            <xs:documentation>Bindings to a specific fault policy
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="composite" type="tns:compositeType"
+                    minOccurs="0" maxOccurs="1"/>
+                <xs:element name="component" type="tns:componentType"
+                    minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="reference" type="tns:referenceType"
+                    minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" default="2.0.1"/>
+        </xs:complexType>
+        <xs:key name="UniquePartnerLinkName">
+            <xs:selector xpath="tns:reference/tns:name"/>
+            <xs:field xpath="."/>
+        </xs:key>
+        <xs:key name="UniquePortType">
+            <xs:selector xpath="tns:reference/tns:portType"/>
+            <xs:field xpath="."/>
+        </xs:key>
+        <xs:key name="UniquePolicyName">
+            <xs:selector xpath="tns:reference"/>
+            <xs:field xpath="@faultPolicy"/>
+        </xs:key>
+    </xs:element>
+    <xs:simpleType name="nameType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="propertyType">
+        <xs:simpleContent>
+            <xs:extension base="tns:nameType">
+                <xs:attribute name="name" type="xs:string" use="required"
+                    fixed="faultPolicy"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="referenceType">
+        <xs:annotation>
+            <xs:documentation>Bindings for a partner link. Overrides composite
+                level binding.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:annotation>
+                <xs:documentation>Specification at partner link name overrides
+                    specification for a port type</xs:documentation>
+            </xs:annotation>
+            <xs:element name="name" type="tns:nameType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:element name="portType" type="xs:QName" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="faultPolicy" type="tns:nameType" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="componentType">
+        <xs:annotation>
+            <xs:documentation>Binding for a component </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="tns:nameType" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="faultPolicy" type="tns:nameType" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="compositeType">
+        <xs:annotation>
+            <xs:documentation>Binding for the entire composite</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="faultPolicy" type="tns:nameType" use="required"/>
+    </xs:complexType>
+</xs:schema>

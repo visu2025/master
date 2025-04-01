@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/FaultHandlingFrameworkSample"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="sampleRequest">
+    <complexType>
+      <sequence>
+        <element name="request" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="sampleResponse">
+    <complexType>
+      <sequence>
+        <element name="sampleType" type="string"/>
+        <element name="responseMessage" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

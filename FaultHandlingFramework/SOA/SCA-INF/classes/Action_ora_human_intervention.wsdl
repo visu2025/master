@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Action_ora_human_intervention"
+             targetNamespace="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/bpel_300_FaultHandlingFramework_jws/SampleFeatureRouter/Action_ora_human_intervention"
+             xmlns:ns1="http://xmlns.oracle.com/FaultHandlingFrameworkSample"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/FaultHandlingFrameworkSample" schemaLocation="SCA-INF/classes/xsd/FaultHandlingFrameworkSample.xsd" />
+		</schema>
+	</wsdl:types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="Action_ora_human_interventionRequestMessage">
+		<wsdl:part name="payload" element="ns1:sampleRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="Action_ora_human_interventionResponseMessage">
+		<wsdl:part name="payload" element="ns1:sampleResponse" />
+	</wsdl:message>
+
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- portType implemented by the Action_ora_human_intervention BPEL process -->
+	<wsdl:portType name="Action_ora_human_intervention">
+		<wsdl:operation name="process">
+			<wsdl:input message="client:Action_ora_human_interventionRequestMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- portType implemented by the requester of Action_ora_human_intervention BPEL process
+	for asynchronous callback purposes
+	-->
+	<wsdl:portType name="Action_ora_human_interventionCallback">
+		<wsdl:operation name="processResponse">
+			<wsdl:input message="client:Action_ora_human_interventionResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	the Action_ora_human_intervention partnerLinkType binds the provider and
+	requester portType into an asynchronous conversation.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<plnk:partnerLinkType name="Action_ora_human_intervention">
+		<plnk:role name="Action_ora_human_interventionProvider">
+			<plnk:portType name="client:Action_ora_human_intervention"/>
+		</plnk:role>
+		<plnk:role name="Action_ora_human_interventionRequester">
+			<plnk:portType name="client:Action_ora_human_interventionCallback"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

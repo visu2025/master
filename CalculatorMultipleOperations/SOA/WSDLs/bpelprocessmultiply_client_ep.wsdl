@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="BPELProcessMultiply"
+     targetNamespace="http://xmlns.oracle.com/AnuAnnaSOAApplication/Multiplication/BPELProcessMultiply"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/AnuAnnaSOAApplication/Multiplication/BPELProcessMultiply"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://localhost:7101/soa-infra/services/default/Multiplication!1.0/WSDLs/BPELProcessMultiply.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="BPELProcessMultiply">
+        <plnk:role name="BPELProcessMultiplyProvider" portType="client:BPELProcessMultiply"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/AnuAnnaSOAApplication/Multiplication/BPELProcessMultiply"
+                 schemaLocation="../Schemas/BPELProcessMultiply.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="BPELProcessMultiplyRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="BPELProcessMultiplyResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="BPELProcessMultiply">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:BPELProcessMultiplyRequestMessage"/>
+            <wsdl:output message="client:BPELProcessMultiplyResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BPELProcessMultiplyBinding" type="client:BPELProcessMultiply">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="bpelprocessmultiply_client_ep">
+        <wsdl:port name="BPELProcessMultiply_pt" binding="client:BPELProcessMultiplyBinding">
+            <soap:address location="http://localhost:7101/soa-infra/services/default/Multiplication/bpelprocessmultiply_client_ep"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
